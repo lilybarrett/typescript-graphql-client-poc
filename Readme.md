@@ -17,6 +17,16 @@ $ npm i
 $ npm run dev
 ```
 
+Note: You will need to create a `.env` file with your Postgres DB_NAME, DB_PASSWORD and DB_USERNAME.
+
+Sample `.env` file content:
+
+```
+DB_NAME=database
+DB_PASSWORD=password
+DB_USERNAME=username
+```
+
 Navigate to `localhost:4000/graphiql` and add this mutation into the graphiql interface:
 
 ```
