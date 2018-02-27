@@ -5,6 +5,8 @@ import { ApolloProvider } from "react-apollo";
 import { graphql } from "react-apollo";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import Page from "../components/page";
+import { Row, Col } from "react-bootstrap";
 import gql from "graphql-tag";
 import "cross-fetch/polyfill";
 
@@ -18,7 +20,13 @@ const client = new ApolloClient({
 const ChannelsPage: React.SFC = (props) => {
     return (
         <ApolloProvider client={client}>
-            <ChannelsListWithData />
+            <Page>
+                <Row>
+                    <Col xs={12}>
+                        <ChannelsListWithData />
+                    </Col>
+                </Row>
+            </Page>
         </ApolloProvider>
     );
 };

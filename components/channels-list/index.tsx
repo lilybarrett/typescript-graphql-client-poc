@@ -1,5 +1,6 @@
 import * as React from "react";
 import gql from "graphql-tag";
+import ListItem from "./list-item";
 import { graphql, OptionProps } from "react-apollo";
 
 const ChannelsList: React.SFC<OptionProps<{}, any>> = ({ data: { loading, error, channels }}) => {
@@ -11,9 +12,9 @@ const ChannelsList: React.SFC<OptionProps<{}, any>> = ({ data: { loading, error,
     }
 
     return (
-        <ul>
-            { channels.map((ch) => <li key={ch.id}>{ch.name}</li>) }
-        </ul>
+        <div>
+            { channels.map((ch) => <ListItem key={ch.id}>{ch.name}</ListItem>) }
+        </div>
     );
 };
 
