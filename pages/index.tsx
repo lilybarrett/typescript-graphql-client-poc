@@ -1,5 +1,6 @@
 import * as React from "react";
 import ChannelsListWithData from "../components/channels-list";
+import CreateChannelWithMutation from "../components/add-channel";
 import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { graphql } from "react-apollo";
@@ -23,6 +24,7 @@ const ChannelsPage: React.SFC = (props) => {
             <Page>
                 <Row>
                     <Col xs={12}>
+                        <CreateChannelWithMutation />
                         <ChannelsListWithData />
                     </Col>
                 </Row>
