@@ -18,7 +18,7 @@ const ChannelsList: React.SFC<OptionProps<{}, any>> = ({ data: { loading, error,
     );
 };
 
-const channelsListQuery = gql`
+export const channelsListQuery = gql`
     query ChannelsListQuery {
         channels {
             id
@@ -27,6 +27,6 @@ const channelsListQuery = gql`
     }
 `;
 
-const ChannelsListWithData = graphql(channelsListQuery)(ChannelsList);
+const ChannelsListWithData = graphql(channelsListQuery, { options: { pollInterval: 5000 }})(ChannelsList);
 
 export default ChannelsListWithData;
