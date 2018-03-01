@@ -2,20 +2,12 @@
 
 Adapted from Jonas Helfer's [Full-stack React & GraphQL Tutorial](https://dev-blog.apollodata.com/react-graphql-tutorial-part-2-server-99d0528c7928). Updated to use TypeScript, styled components, & next.js.
 
-First tab in your terminal:
+In your terminal, run:
 
 ```
 $ git clone git@github.com:lilybarrett/typescript-graphql-client-poc.git
 $ npm i
 $ npm run build
-$ npm run dev
-```
-
-Second tab in your terminal:
-
-```
-$ git clone git@github.com:lilybarrett/typescript-graphql-server-poc.git
-$ npm i
 $ npm run dev
 ```
 
