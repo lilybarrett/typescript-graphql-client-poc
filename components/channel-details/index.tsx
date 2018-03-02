@@ -20,7 +20,7 @@ interface IOwnProps {
 
 class ChannelDetails extends React.Component<IOwnProps & ChildProps<any, IMutateProps>, {}> {
     public render () {
-        const { loading, error, channel } = this.props.data;
+        const { loading, error, channel, channelToQuery } = this.props.data;
         if (loading) {
             return <p>Loading...</p>;
         }
@@ -35,7 +35,7 @@ class ChannelDetails extends React.Component<IOwnProps & ChildProps<any, IMutate
                 <div>
                     {channel.name}
                 </div>
-                <MessageList messages={channel.channelMessages}/>
+                <MessageList messages={channel.channelMessages} channelToQuery={channelToQuery}/>
             </div>
         );
     }
@@ -57,7 +57,8 @@ export const channelDetailsQuery = gql`
 
 const ChannelDetailsWithData = graphql(channelDetailsQuery, {
     options: (props: IOwnProps) => ({
-        variables: { channelId: props.channelToQuery },
+        // variables: { channelId: props.channelToQuery },
+        variables: { channelId: 1 },
     }),
 })(ChannelDetails);
 

@@ -1,7 +1,12 @@
 import * as React from "react";
-import AddMessage from "../add-message";
+import CreateMessageWithMutation from "../add-message";
 
-const MessageList = ({ messages }) => {
+interface IPageProps {
+    channelToQuery: string;
+    messages: any;
+}
+
+const MessageList: React.SFC<IPageProps> = ({ messages, channelToQuery }) => {
     return (
         <div>
             { messages !== null && messages !== undefined ?
@@ -13,7 +18,8 @@ const MessageList = ({ messages }) => {
                         );
                     }) : null
             }
-            <AddMessage />
+            {/* <CreateMessageWithMutation channelToQuery={channelToQuery}/> */}
+            <CreateMessageWithMutation/>
         </div>
   );
 };
