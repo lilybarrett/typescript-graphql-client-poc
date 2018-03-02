@@ -4,13 +4,14 @@ import AddMessage from "../add-message";
 const MessageList = ({ messages }) => {
     return (
         <div>
-            { messages.map( (message) => {
-                return (
-                    <div key={message.id}>
-                        {message.text}
-                    </div>
-                    );
-                })
+            { messages !== null && messages !== undefined ?
+                messages.map( (message) => {
+                    return (
+                        <div key={message.id}>
+                            {message.text} - {message.messageUser}
+                        </div>
+                        );
+                    }) : null
             }
             <AddMessage />
         </div>

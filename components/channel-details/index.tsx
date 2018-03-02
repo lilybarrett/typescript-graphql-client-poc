@@ -2,7 +2,7 @@ import * as React from "react";
 import { ApolloClient } from "apollo-client";
 import MessageList from "../../components/message-list";
 import { ApolloProvider } from "react-apollo";
-import { graphql, OptionProps } from "react-apollo";
+import { graphql, ChildProps, MutationOpts } from "react-apollo";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import Page from "../../components/page";
@@ -10,7 +10,11 @@ import { Row, Col } from "react-bootstrap";
 import gql from "graphql-tag";
 import "cross-fetch/polyfill";
 
-class ChannelDetails extends React.Component<OptionProps<{}, any>> {
+interface IMutateProps {
+    channelId: number;
+}
+
+class ChannelDetails extends React.Component<ChildProps<any, IMutateProps>, any> {
     public render () {
         const { loading, error, channel } = this.props.data;
         if (loading) {
@@ -34,18 +38,22 @@ class ChannelDetails extends React.Component<OptionProps<{}, any>> {
 }
 
 export const channelDetailsQuery = gql`
-  query ChannelDetailsQuery($channelId: ID!) {
-    channel(id: $channelId) {
-      id
-      name
-      channelMessages
+    query ChannelDetailsQuery($channelId: ID!) {
+        channel(id: $channelId) {
+            id
+            name
+            channelMessages {
+                id
+                text
+                messageUser
+            }
+        }
     }
-  }
 `;
 
 const ChannelDetailsWithData = graphql(channelDetailsQuery, {
-    options: (props) => ({
-        variables: { channelId: props },
+    options: () => ({
+        variables: { channelId: 1 },
     }),
 })(ChannelDetails);
 
