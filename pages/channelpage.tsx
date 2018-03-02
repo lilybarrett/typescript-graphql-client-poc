@@ -10,6 +10,10 @@ import { Row, Col } from "react-bootstrap";
 import gql from "graphql-tag";
 import "cross-fetch/polyfill";
 
+interface IChannelPageProps {
+    url: any;
+}
+
 const client = new ApolloClient({
     ssrMode: true,
     // server-side-rendering mode
@@ -17,12 +21,13 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-const ChannelPage: React.SFC = (props) => {
+const ChannelPage: React.SFC<IChannelPageProps> = (props) => {
+    const channelToQuery = props.url.query.channelId;
     return (
         <ApolloProvider client={client}>
             <Row>
                 <Col xs={12}>
-                    <ChannelDetailsWithData />
+                    <ChannelDetailsWithData channelToQuery={channelToQuery}/>
                 </Col>
             </Row>
         </ApolloProvider>

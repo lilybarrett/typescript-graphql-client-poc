@@ -2,7 +2,7 @@ import * as React from "react";
 import { ApolloClient } from "apollo-client";
 import MessageList from "../../components/message-list";
 import { ApolloProvider } from "react-apollo";
-import { graphql, ChildProps, MutationOpts } from "react-apollo";
+import { graphql, ChildProps } from "react-apollo";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import Page from "../../components/page";
@@ -14,7 +14,11 @@ interface IMutateProps {
     channelId: number;
 }
 
-class ChannelDetails extends React.Component<ChildProps<any, IMutateProps>, any> {
+interface IOwnProps {
+    channelToQuery: string;
+}
+
+class ChannelDetails extends React.Component<IOwnProps & ChildProps<any, IMutateProps>, {}> {
     public render () {
         const { loading, error, channel } = this.props.data;
         if (loading) {
@@ -52,8 +56,8 @@ export const channelDetailsQuery = gql`
 `;
 
 const ChannelDetailsWithData = graphql(channelDetailsQuery, {
-    options: () => ({
-        variables: { channelId: 1 },
+    options: (props: IOwnProps) => ({
+        variables: { channelId: props.channelToQuery },
     }),
 })(ChannelDetails);
 
