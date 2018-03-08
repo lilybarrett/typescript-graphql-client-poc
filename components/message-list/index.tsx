@@ -6,7 +6,8 @@ interface IPageProps {
     messages: any;
 }
 
-const MessageList: React.SFC<IPageProps> = ({ messages, channelToQuery }) => {
+const MessageList: React.SFC<IPageProps> = (props) => {
+    const { messages } = props;
     return (
         <div>
             { messages !== null && messages !== undefined ?
