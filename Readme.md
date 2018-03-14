@@ -11,9 +11,17 @@ $ npm run build
 $ npm run dev
 ```
 
-Note: You will need to create a `.env` file with your Postgres DB_NAME, DB_PASSWORD and DB_USERNAME.
+In a second tab in your terminal:
 
-Sample `.env` file content:
+```
+$ git clone git@github.com:lilybarrett/typescript-graphql-server-poc.git
+$ npm i
+$ npm run dev
+```
+
+Note: Within `typescript-graphql-server-poc`, you will need to create a .env file with your Postgres DB_NAME, DB_PASSWORD and DB_USERNAME.
+
+Sample .env file content:
 
 ```
 DB_NAME=database
