@@ -7,7 +7,7 @@ interface IPageProps {
 }
 
 const MessageList: React.SFC<IPageProps> = (props) => {
-    const { messages } = props;
+    const { messages, channelToQuery } = props;
     return (
         <div>
             { messages !== null && messages !== undefined ?
@@ -19,8 +19,7 @@ const MessageList: React.SFC<IPageProps> = (props) => {
                         );
                     }) : null
             }
-            {/* <CreateMessageWithMutation channelToQuery={channelToQuery}/> */}
-            <CreateMessageWithMutation/>
+            <CreateMessageWithMutation channelToQuery={channelToQuery}/>
         </div>
   );
 };

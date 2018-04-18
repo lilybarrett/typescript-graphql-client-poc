@@ -20,7 +20,7 @@ interface IOwnProps {
 
 class ChannelDetails extends React.Component<IOwnProps & ChildProps<any, IMutateProps>, {}> {
     public render () {
-        const { loading, error, channel, channelToQuery } = this.props.data;
+        const { data: { loading, error, channel }, channelToQuery } = this.props;
         if (loading) {
             return <p>Loading...</p>;
         }

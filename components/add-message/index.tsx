@@ -5,7 +5,7 @@ import { channelDetailsQuery } from "../channel-details";
 
 interface IMutateProps {
   text: string;
-  messageChannelId: number;
+  // messageChannelId: number;
   messageUser: string;
 }
 
@@ -14,15 +14,17 @@ interface IOwnProps {
 }
 
 const AddMessage: React.SFC<IOwnProps & ChildProps<any, IMutateProps>> = (props) => {
+  // const { messageChannelId, messageUser, channelToQuery } = props;
+  const { messageUser, channelToQuery } = props;
   const handleKeyUp = (evt) => {
     if (evt.keyCode === 13) {
       // keycode is for the Return or Enter key
       evt.persist();
       props.mutate({
         variables: {
-          text: evt.target.value, messageUser: "Lily", messageChannelId: 1,
+          text: evt.target.value, messageUser: "Lily", messageChannelId: parseInt(channelToQuery, 10),
         },
-        refetchQueries: [ { query: channelDetailsQuery, variables: { channelId: 1 } } ],
+        refetchQueries: [ { query: channelDetailsQuery, variables: { channelId: parseInt(channelToQuery, 10) } } ],
       }).then((res) => {
         evt.target.value = "";
       });
@@ -50,7 +52,7 @@ const createMessageMutation = gql`
 }
 `;
 
-const CreateMessageWithMutation = graphql(
+const CreateMessageWithMutation = graphql<{}, IOwnProps, {}>(
   createMessageMutation,
 )(AddMessage);
 
