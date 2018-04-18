@@ -13,7 +13,7 @@ const ChannelsList: React.SFC<OptionProps<{}, any>> = ({ data: { loading, error,
 
     return (
         <div>
-            { channels.map((ch) => <ListItem key={ch.id}>{ch.name}</ListItem>) }
+            { channels.map((ch) => <a href={`/${ch.id}`}><ListItem key={ch.id}>{ch.name}</ListItem></a>) }
         </div>
     );
 };

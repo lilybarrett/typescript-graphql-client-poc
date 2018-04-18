@@ -27,8 +27,7 @@ const ChannelPage: React.SFC<IChannelPageProps> = (props) => {
         <ApolloProvider client={client}>
             <Row>
                 <Col xs={12}>
-                    {/* <ChannelDetailsWithData channelToQuery={channelToQuery}/> */}
-                    <ChannelDetailsWithData />
+                    <ChannelDetailsWithData channelToQuery={channelToQuery}/>
                 </Col>
             </Row>
         </ApolloProvider>
