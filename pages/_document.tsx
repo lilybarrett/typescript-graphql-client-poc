@@ -16,6 +16,8 @@ export default class MyDocument extends Document {
             <html>
                 <Head>
                     <title>TypeScript React GraphQL Client</title>
+                    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
                     {this.props.styleTags}
                     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
                 </Head>

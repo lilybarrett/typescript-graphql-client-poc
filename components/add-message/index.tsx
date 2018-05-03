@@ -5,7 +5,6 @@ import { channelDetailsQuery } from "../channel-details";
 
 interface IMutateProps {
   text: string;
-  // messageChannelId: number;
   messageUser: string;
 }
 
@@ -52,7 +51,7 @@ const createMessageMutation = gql`
 }
 `;
 
-const CreateMessageWithMutation = graphql<{}, IOwnProps, {}>(
+const CreateMessageWithMutation = graphql<any, IOwnProps, {}>(
   createMessageMutation,
 )(AddMessage);
 

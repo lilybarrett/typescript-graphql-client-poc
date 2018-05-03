@@ -1,18 +1,13 @@
 import * as React from "react";
-import ChannelDetailsWithData from "../components/channel-details";
+import { ChannelsListWithData, CreateChannelWithMutation, Page } from "components";
 import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { graphql } from "react-apollo";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import Page from "../components/page";
 import { Row, Col } from "react-bootstrap";
 import gql from "graphql-tag";
 import "cross-fetch/polyfill";
-
-interface IChannelPageProps {
-    url: any;
-}
 
 const client = new ApolloClient({
     ssrMode: true,
@@ -21,17 +16,19 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-const ChannelPage: React.SFC<IChannelPageProps> = (props) => {
-    const channelToQuery = props.url.query.channelId;
+const ChannelsPage: React.SFC = (props) => {
     return (
         <ApolloProvider client={client}>
-            <Row>
-                <Col xs={12}>
-                    <ChannelDetailsWithData channelToQuery={channelToQuery}/>
-                </Col>
-            </Row>
+            <Page>
+                <Row>
+                    <Col xs={12}>
+                        <CreateChannelWithMutation />
+                        <ChannelsListWithData />
+                    </Col>
+                </Row>
+            </Page>
         </ApolloProvider>
     );
 };
 
-export default ChannelPage;
+export default ChannelsPage;

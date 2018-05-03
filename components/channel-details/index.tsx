@@ -55,7 +55,8 @@ export const channelDetailsQuery = gql`
     }
 `;
 
-const ChannelDetailsWithData = graphql<{}, IOwnProps, {}>(channelDetailsQuery, {
+// const ChannelDetailsWithData = graphql<{}, IOwnProps & ChildProps<any, IMutateProps>, {}>(channelDetailsQuery, {
+const ChannelDetailsWithData = graphql<any, IOwnProps, {}>(channelDetailsQuery, {
     options: (props: IOwnProps) => ({
         variables: { channelId: parseInt(props.channelToQuery, 10) },
     }),

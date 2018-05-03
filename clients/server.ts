@@ -1,5 +1,5 @@
-import * as next from "next";
-import * as Express from "express";
+import next from "next";
+import Express from "express";
 import "reflect-metadata";
 import routes from "./routes";
 

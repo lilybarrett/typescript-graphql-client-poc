@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
         "jsx": "react",
-        "target": "es2017",
         "module": "commonjs",
+        "target": "es2017",
         "skipLibCheck": true,
-    },
-    "exclude": [
-        "node_modules"
-    ]
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "baseUrl": "."
+    }
 }

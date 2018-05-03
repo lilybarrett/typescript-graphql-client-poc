@@ -1,6 +1,5 @@
-import * as nextRoutes from "next-routes";
+const routes = require("next-routes")();
 
-const routes = nextRoutes();
 routes
 .add("index", "/")
 .add("channelpage", "/:channelId");
