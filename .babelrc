@@ -3,7 +3,8 @@
     ["module-resolver", {
       "root": ["."],
       "alias": {
-        "components": "./components"
+        "components": "./components",
+        "models": "./models",
       }
     }]
   ]

@@ -1,36 +1,20 @@
-import * as React from "react";
-import { ChannelDetailsWithData, Page } from "components";
-import { ApolloClient } from "apollo-client";
-import { ApolloProvider } from "react-apollo";
-import { graphql } from "react-apollo";
-import { HttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import ChannelDetails from "./components/channel-details";
 import { Row, Col } from "react-bootstrap";
-import gql from "graphql-tag";
-import "cross-fetch/polyfill";
+import React from "react";
+import { withData } from "providers";
+import { compose } from "recompose";
+import { withPageState, PageState } from "./providers";
 
-interface IChannelPageProps {
-    url: any;
-}
-
-const client = new ApolloClient({
-    ssrMode: true,
-    // server-side-rendering mode
-    link: new HttpLink({ uri: "http://localhost:4000/graphql"}),
-    cache: new InMemoryCache(),
-});
-
-const ChannelPage: React.SFC<IChannelPageProps> = (props) => {
-    const channelToQuery = props.url.query.channelId;
+export default compose<PageState, {}>(
+    withData,
+    withPageState,
+)(() => {
+    debugger;
     return (
-        <ApolloProvider client={client}>
-            <Row>
-                <Col xs={12}>
-                    <ChannelDetailsWithData channelToQuery={channelToQuery}/>
-                </Col>
-            </Row>
-        </ApolloProvider>
+        <Row>
+            <Col xs={12}>
+                <ChannelDetails />
+            </Col>
+        </Row>
     );
-};
-
-export default ChannelPage;
+});

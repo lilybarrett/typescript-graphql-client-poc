@@ -1,7 +1,7 @@
 const routes = require("next-routes")();
 
 routes
-.add("index", "/")
-.add("channelpage", "/:channelId");
+.add("channels", "/channels")
+.add("channel", "/channels/:channelId");
 
 export default routes;
