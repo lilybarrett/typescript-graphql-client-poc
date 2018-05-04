@@ -1,9 +1,16 @@
 import * as React from "react";
-import gql from "graphql-tag";
+import { Row, Col } from "react-bootstrap";
+import { withPageState } from "../../providers";
 import ListItem from "./list-item";
-import { graphql, OptionProps } from "react-apollo";
+import AddChannel from "../add-channel";
 
-const ChannelsList: React.SFC<OptionProps<{}, any>> = ({ data: { loading, error, channels }}) => {
+export default withPageState(({
+    data: {
+        loading,
+        error,
+        channels,
+    },
+}) => {
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -13,20 +20,8 @@ const ChannelsList: React.SFC<OptionProps<{}, any>> = ({ data: { loading, error,
 
     return (
         <div>
+            <AddChannel />
             { channels.map((ch) => <a href={`/channels/${ch.id}`}><ListItem key={ch.id}>{ch.name}</ListItem></a>) }
         </div>
     );
-};
-
-export const channelsListQuery = gql`
-    query ChannelsListQuery {
-        channels {
-            id
-            name
-        }
-    }
-`;
-
-const ChannelsListWithData = graphql(channelsListQuery, { options: { pollInterval: 5000 }})(ChannelsList);
-
-export default ChannelsListWithData;
+});

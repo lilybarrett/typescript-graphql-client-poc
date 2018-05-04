@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Page, MessageList } from "components";
+import { MessageList } from "components";
 import { Row, Col } from "react-bootstrap";
 import { withPageState } from "../../providers";
 

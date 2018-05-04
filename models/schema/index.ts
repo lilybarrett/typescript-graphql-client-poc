@@ -18,3 +18,23 @@ export interface ChannelDetailsQuery {
     } | null > | null,
   } | null,
 };
+
+export interface CreateChannelMutationVariables {
+  name: string,
+};
+
+export interface CreateChannelMutation {
+  createChannel:  {
+    __typename: "Channel",
+    id: string,
+    name: string | null,
+  } | null,
+};
+
+export interface ChannelsListQuery {
+  channels:  Array< {
+    __typename: "Channel",
+    id: string,
+    name: string | null,
+  } | null > | null,
+};

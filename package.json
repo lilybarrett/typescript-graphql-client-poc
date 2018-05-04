@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "prebuild": "tsc",
-    "dev": "ts-node ./clients/server.js",
+    "dev": "concurrently \"tsc --pretty --watch\" \"node ./clients/server.js\"",
     "build": "next build",
     "introspect": "apollo-codegen introspect-schema http://localhost:4000/graphql --output ./models/schema/index.json",
-    "generate": "apollo-codegen generate ./pages/**/queries/*.ts --schema ./models/schema/index.json --target typescript --output ./models/schema/index.ts --add-typename --tag-name gql",
+    "generate": "apollo-codegen generate ./pages/**/data/**/*.ts --schema ./models/schema/index.json --target typescript --output ./models/schema/index.ts --add-typename --tag-name gql",
     "typegen": "npm run introspect && npm run generate",
     "start": "next start",
     "lint": "tslint --fix --project ./"

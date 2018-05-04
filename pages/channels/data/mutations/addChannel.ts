@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export default gql`
-    query ChannelsList {
-        channels {
+    mutation CreateChannel($name: String!) {
+        createChannel(name: $name) {
             id
             name
         }

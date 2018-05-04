@@ -11,6 +11,14 @@ export default class MyDocument extends Document {
         return {...page, styleTags};
     }
 
+    constructor (props) {
+        super(props);
+        const { __NEXT_DATA__, ids } = props;
+        if (ids) {
+          __NEXT_DATA__.ids = ids;
+        }
+      }
+
     public render () {
         return (
             <html>
