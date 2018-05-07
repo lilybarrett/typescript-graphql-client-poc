@@ -20,6 +20,7 @@ export const withEventHandlers = withHandlers<CreateChannelProps, EventProps>({
         };
         if (event.keyCode === 13) {
             createChannel(payload);
+            event.target.value = "";
         }
     },
 });
