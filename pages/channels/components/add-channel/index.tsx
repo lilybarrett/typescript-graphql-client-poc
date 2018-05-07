@@ -1,29 +1,15 @@
 import * as React from "react";
-import { graphql } from "react-apollo";
-import { channels} from "../../data/queries";
-import gql from "graphql-tag";
+import provider, { ProviderProps } from "./providers";
 
-const AddChannel = () => {
-  const handleKeyUp = async (evt) => {
-    if (evt.keyCode === 13) {
-        evt.persist();
-        alert("Channel added");
-        // mutate({
-        //     variables: { name: evt.target.value },
-        //     refetchQueries: [ { query: channels }],
-        // })
-        // .then((res) => {
-        evt.target.value = "";
-        // });
-    }
-  };
+const AddChannel: React.SFC<ProviderProps> = ({ onChange }) => {
   return (
     <input
       type="text"
       placeholder="New channel"
-      onKeyUp={handleKeyUp}
+      onKeyPress={onChange}
     />
   );
 };
 
-export default AddChannel;
+export default provider(AddChannel);
+
