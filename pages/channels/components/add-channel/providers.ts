@@ -1,22 +1,26 @@
 import { compose, withHandlers } from "recompose";
 import { withCreateChannel, CreateChannelProps } from "../../providers";
+import { channels } from "../../data/queries";
 
 export interface EventProps {
-    onChange: (event) => void;
+    handleKeyUp: (event) => void;
 }
 
 export const withEventHandlers = withHandlers<CreateChannelProps, EventProps>({
-    onChange: (props) => (event) => {
+    handleKeyUp: (props) => async (event) => {
         const {
-            addChannel,
+            createChannel,
         } = props;
 
         const payload = {
             variables: {
                 name: event.target.value,
             },
+            refetchQueries: [ { query: channels }],
         };
-        addChannel(payload);
+        if (event.keyCode === 13) {
+            createChannel(payload);
+        }
     },
 });
 

@@ -2,7 +2,6 @@ import * as React from "react";
 import { Row, Col } from "react-bootstrap";
 import { withPageState } from "../../providers";
 import ListItem from "./list-item";
-import AddChannel from "../add-channel";
 
 export default withPageState(({
     data: {
@@ -19,9 +18,8 @@ export default withPageState(({
     }
 
     return (
-        <div>
-            <AddChannel />
+        <>
             { channels.map((ch) => <a href={`/channels/${ch.id}`}><ListItem key={ch.id}>{ch.name}</ListItem></a>) }
-        </div>
+        </>
     );
 });

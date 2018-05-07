@@ -5,6 +5,7 @@ import { withData } from "providers";
 import { compose } from "recompose";
 import { withPageState, PageState } from "./providers";
 import ChannelsList from "./components/channels-list";
+import AddChannel from "./components/add-channel";
 
 export default compose<PageState, {}>(
     withData,
@@ -14,7 +15,7 @@ export default compose<PageState, {}>(
         <Page>
             <Row>
                 <Col xs={12}>
-                    {/* <CreateChannelWithMutation /> */}
+                    <AddChannel />
                     <ChannelsList />
                 </Col>
             </Row>

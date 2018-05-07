@@ -1,5 +1,5 @@
-import addChannel from "./addChannel";
+import createChannel from "./createChannel";
 
 export {
-    addChannel,
+    createChannel,
 };

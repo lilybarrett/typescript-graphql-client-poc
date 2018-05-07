@@ -1,11 +1,15 @@
-import { addChannel } from "../data/mutations";
+import { createChannel } from "../data/mutations";
 import { CreateChannelMutation, CreateChannelMutationVariables } from "models";
-import { MutationProps, Mutation } from "react-apollo";
-import { defaultProps } from "recompose";
+import { graphql, ChildProps, MutationProps, Mutation } from "react-apollo";
 
-export type CreateChannelProps = MutationProps<CreateChannelMutation, CreateChannelMutationVariables>;
-class CreateChannel extends Mutation<CreateChannelMutation, CreateChannelMutationVariables> { }
-export default defaultProps<CreateChannelProps>({
-    mutation: addChannel,
-    children: null,
-})(CreateChannel);
+export type CreateChannelProps = ChildProps<CreateChannelMutationVariables, CreateChannelMutation> & {
+    createChannel: CreateChannelProps["mutate"],
+};
+
+export default graphql<CreateChannelMutationVariables, CreateChannelMutation>(createChannel, {
+    name: "createChannel",
+    options: ({ name }) => ({
+        variables: { name },
+    }),
+});
+

@@ -1,12 +1,12 @@
 import * as React from "react";
 import provider, { ProviderProps } from "./providers";
 
-const AddChannel: React.SFC<ProviderProps> = ({ onChange }) => {
+const AddChannel: React.SFC<ProviderProps> = ({ handleKeyUp }) => {
   return (
     <input
       type="text"
       placeholder="New channel"
-      onKeyPress={onChange}
+      onKeyUp={handleKeyUp}
     />
   );
 };
