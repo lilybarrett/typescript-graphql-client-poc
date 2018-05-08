@@ -1,6 +1,21 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
+export interface CreateMessageMutationVariables {
+  text?: string | null,
+  messageUser?: string | null,
+  messageChannelId?: number | null,
+};
+
+export interface CreateMessageMutation {
+  createChannelMessage:  {
+    __typename: "Message",
+    messageChannelId: number | null,
+    text: string | null,
+    messageUser: string | null,
+  } | null,
+};
+
 export interface ChannelDetailsQueryVariables {
   channelId: string,
 };

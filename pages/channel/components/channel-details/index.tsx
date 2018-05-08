@@ -7,7 +7,6 @@ export default withPageState(({
     data: {
         loading,
         error,
-        channelId,
         channel,
     },
 }) => {
